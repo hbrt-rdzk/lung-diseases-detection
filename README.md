@@ -1,11 +1,14 @@
 # CheXpert based lung diseases classifier
+
 Process of data processing and neural networks training, to classify nine lung diseases on x-ray pictures.
 
 ## Dataset
+
 Neural networks models were trained on dataset called CheXpert, that contains of 223,648 labeled, lung, x-ray images.
 Considered diseases:
+
 - Lung Lesion
-- Lung Opacity 
+- Lung Opacity
 - Edema
 - Consolidation
 - Pneumonia
@@ -15,7 +18,9 @@ Considered diseases:
 - Pleural Other
 
 ## CNN Architectures
+
 Trained architectures:
+
 - LeNet-5
 - AlexNet
 - VGG-16
@@ -23,10 +28,11 @@ Trained architectures:
 - DenseNet-121
 
 ## Set up dataset
-1. Make sure you have CheXpert-v1.0-small in your root directory. 
-2. Run ``` python3 dataset_processing/preliminary_data_processing.py ``` to divide dataset into validation and test datasets.
 
+1. Make sure you have CheXpert-v1.0-small in your root directory.
+2. Run `python3 dataset_processing/preliminary_data_processing.py` to divide dataset into train, validation and test datasets.
+3. Run `python3 dataset_processing/multilabel_processing.py` or `python3 dataset_processing/singlelabel_processing.py` according to your needs.
 
 ## Results
+
 Reults can be found in attached engineer thesis. [PL Only]
- 

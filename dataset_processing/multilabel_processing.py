@@ -1,30 +1,45 @@
 import csv
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from data_processor import DataProcessor
 
+COLUMNS = [
+    'Path',
+    'Atelectasis',
+    'Consolidation',
+    'Edema',
+    'Pleural Effusion',
+    'Pneumonia',
+    'Pneumothorax',
+    'Lung Opacity',
+    'Lung Lesion',
+    'Fracture',
+    'No Finding'
+]
 
-class BasicProcessing(DataProcessor):
+
+class MultiLabelProcessing(DataProcessor):
     '''
-    Dividing dataset into train, validation and test datasets, with .
+    Process dataset to contain only important data for multilabel classification.
     '''
 
-    def __init__(self, file: str) -> None:
-        super().__init__(file)
+    def __init__(self, directory: str) -> None:
+        super().__init__(directory)
 
-    def divide_dataset(self, test_size: float = 0.2) -> dict:
-        with open(self.data_file, 'r') as file:
-            reader = list(csv.reader(file))
-        train, test = train_test_split(
-            reader, shuffle=True, test_size=test_size)
-        valid, test = train_test_split(test, shuffle=True, test_size=0.5)
-        return {
-            'train': train,
-            'validation': valid,
-            'test': test
-        }
+    def process_dataset(self) -> dict:
+        processed_datasets = {}
+        for dataset in self.dataset_names:
+            file = self.directory + '/' + dataset + '.csv'
+            data = pd.read_csv(file)
+            data = data.replace(-1, 0)
+            data = data.fillna(0)
+            data = data[COLUMNS]
+
+            processed_datasets[dataset] = data.values.tolist()
+        return processed_datasets
 
 
-if __name__ == "__main__":
-    processor = BasicProcessing("CheXpert-v1.0-small/train.csv")
-    divided_dataset = processor.divide_dataset()
-    DataProcessor.save_to_csv(divided_dataset, "dataset")
+if __name__ == '__main__':
+    processor = MultiLabelProcessing('dataset')
+    processed_datasets = processor.process_dataset()
+    processor.save_to_csv(processed_datasets)
