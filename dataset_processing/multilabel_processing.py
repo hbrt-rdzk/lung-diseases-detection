@@ -1,6 +1,4 @@
-import csv
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from data_processor import DataProcessor
 
 COLUMNS = [
@@ -18,28 +16,27 @@ COLUMNS = [
 ]
 
 
-class MultiLabelProcessing(DataProcessor):
+class MultiLabelProcessor(DataProcessor):
     '''
     Process dataset to contain only important data for multilabel classification.
     '''
 
-    def __init__(self, directory: str) -> None:
-        super().__init__(directory)
+    def __init__(self, read_directory: str, write_directory: str) -> None:
+        super().__init__(read_directory=read_directory, write_directory=write_directory)
 
     def process_dataset(self) -> dict:
         processed_datasets = {}
-        for dataset in self.dataset_names:
-            file = self.directory + '/' + dataset + '.csv'
+        for dataset in self.dataset_types:
+            file = self.read_directory + '/' + dataset + '.csv'
             data = pd.read_csv(file)
             data = data.replace(-1, 0)
             data = data.fillna(0)
             data = data[COLUMNS]
-
             processed_datasets[dataset] = data.values.tolist()
         return processed_datasets
 
 
 if __name__ == '__main__':
-    processor = MultiLabelProcessing('dataset')
+    processor = MultiLabelProcessor('dataset', 'dataset_multilabel')
     processed_datasets = processor.process_dataset()
-    processor.save_to_csv(processed_datasets)
+    processor.save_to_directory(processed_datasets)

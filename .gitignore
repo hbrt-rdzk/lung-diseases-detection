@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#dataset files
+CheXpert-v1.0-small
+dataset
+dataset_multilabel
+dataset_singlelabel
