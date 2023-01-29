@@ -29,8 +29,7 @@ Trained architectures:
 
 1. Make sure you have CheXpert-v1.0-small in your root directory.
 2. Run `pip3 install -r python3-requirements.txt` to install packages.
-3. Run `python3 dataset_processing/preliminary_data_processing.py` to divide dataset into train, validation and test datasets.
-4. Run `python3 dataset_processing/multilabel_processing.py` or `python3 dataset_processing/singlelabel_processing.py` according to your needs. Multilabel approach overrides dataset folder; Singlelabel makes new folder with subfolders of images.
+3. Run cells at `dataset_processing/divide_and_process.ipynb` to process and divide dataset into train, validation and test datasets.
 
 ## Results
 
