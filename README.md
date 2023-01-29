@@ -22,6 +22,11 @@ Trained architectures:
 - ResNet-50
 - DenseNet-121
 
+## Set up dataset
+1. Make sure you have CheXpert-v1.0-small in your root directory. 
+2. Run ``` python3 dataset_processing/preliminary_data_processing.py ``` to divide dataset into validation and test datasets.
+
+
 ## Results
 Reults can be found in attached engineer thesis. [PL Only]
  
