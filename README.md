@@ -1,6 +1,6 @@
 # CheXpert based lung diseases classifier
 
-Process of data processing and neural networks training, to classify nine lung diseases on x-ray pictures.
+Process of data processing and neural networks training, to classify ten lung diseases on x-ray pictures.
 
 ## Dataset
 
@@ -16,6 +16,7 @@ Considered diseases:
 - Pneumothorax
 - Pleural Effusion
 - Pleural Other
+- Fracture
 
 ## Trained CNN Architectures
 
