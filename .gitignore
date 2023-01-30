@@ -131,5 +131,8 @@ dmypy.json
 #dataset files
 CheXpert-v1.0-small
 dataset
-dataset_multilabel
-dataset_singlelabel
+dataset_tree
+
+# Other
+.DS_Store
+.idea
