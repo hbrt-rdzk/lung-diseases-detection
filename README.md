@@ -48,4 +48,4 @@ Project structure after those steps, should add these folders:
     - ...
 ## Results
 
-Reults can be found in attached engineer thesis. [PL Only]
+Reults can be found in owner's engineer thesis, upon request. [PL Only]
